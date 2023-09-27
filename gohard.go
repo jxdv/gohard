@@ -3,7 +3,10 @@ package main
 import (
     "flag"
     "fmt"
+    "log"
     "os"
+
+    "github.com/jxd1337/gohard/util"
 )
 
 func main() {
@@ -35,5 +38,14 @@ func main() {
     }
 
     service := *servicePtr
-    fmt.Printf("Selected service: %s\n", service)
+    fmt.Println(service)
+
+    isAdmin, err := util.IsAdmin()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if !isAdmin {
+        fmt.Println("gohard running without admin privileges, modules which require admin won't be displayed")
+    }
 }
