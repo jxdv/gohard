@@ -7,6 +7,7 @@ import (
     "os"
 
     "github.com/jxd1337/gohard/util"
+    "github.com/jxd1337/gohard/mods"
 )
 
 func main() {
@@ -38,7 +39,11 @@ func main() {
     }
 
     service := *servicePtr
-    fmt.Println(service)
+
+    supportedPlatform, err := util.IsLinux()
+    if err != nil {
+        log.Fatal(err)
+    }
 
     isAdmin, err := util.IsAdmin()
     if err != nil {
@@ -47,5 +52,8 @@ func main() {
 
     if !isAdmin {
         fmt.Println("gohard running without admin privileges, modules which require admin won't be displayed")
+        mods.LoadModules(supportedPlatform, isAdmin, service)
+    } else {
+        mods.LoadModules(supportedPlatform, isAdmin, service)
     }
 }

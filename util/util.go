@@ -7,7 +7,7 @@ import (
     "os/user"
 )
 
-func isLinux() (platform string, err error) {
+func IsLinux() (platform string, err error) {
     if runtime.GOOS == "windows" {
         return "win", nil
     } else if runtime.GOOS == "linux" {
@@ -18,7 +18,7 @@ func isLinux() (platform string, err error) {
 }
 
 func IsAdmin() (admin bool, err error) {
-    currentPlatform, err := isLinux()
+    currentPlatform, err := IsLinux()
     if err != nil {
         return false, err
     }

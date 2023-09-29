@@ -1,10 +1,10 @@
 package mods
 
 type Module struct {
-    name String
-    description String
-    command String
+    name string
+    description string
+    command string
     superuser bool
     restart bool
-    os String
+    os string
 }
