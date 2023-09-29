@@ -6,10 +6,15 @@ import (
 
 func LoadModules(platform string, admin bool, service string) {
     if platform == "win" {
-        // Load windows modules
+        // Load all windows modules since we can't check for admin
         fmt.Println("Loading windows modules...")
     } else {
-        // Load Linux modules
         fmt.Println("Loading linux modules...")
+
+        if !admin {
+            fmt.Println("Won't load modules that require admin")
+        } else {
+            fmt.Println("Will read modules that require admin")
+        }
     }
 }

@@ -40,6 +40,16 @@ func main() {
 
     service := *servicePtr
 
+    assetExists, err := util.AssetExists("assets/modules.json")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if !assetExists {
+        fmt.Println("Unable to find modules.json file in default assets/ location")
+        os.Exit(1)
+    }
+
     supportedPlatform, err := util.IsLinux()
     if err != nil {
         log.Fatal(err)
