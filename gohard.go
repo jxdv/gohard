@@ -40,7 +40,7 @@ func main() {
 
     service := *servicePtr
 
-    assetExists, err := util.AssetExists("assets/modules.json")
+    assetExists, err := util.PathExists("assets/modules.json")
     if err != nil {
         log.Fatal(err)
     }

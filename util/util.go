@@ -8,7 +8,7 @@ import (
     "os/user"
 )
 
-func AssetExists(assetPath string) (bool, error) {
+func PathExists(assetPath string) (bool, error) {
     _, err := os.Stat(assetPath)
     if err == nil {
         return true, nil
