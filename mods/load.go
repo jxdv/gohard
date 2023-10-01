@@ -3,11 +3,10 @@ package mods
 import (
     "encoding/json"
     "io/ioutil"
-    "fmt"
     "log"
 )
 
-func LoadModules(platform string, admin bool, service string) {
+func LoadModules(platform string, admin bool, service string) []Module {
     jsonData, err := ioutil.ReadFile("assets/modules.json")
     if err != nil {
         log.Fatal(err)
@@ -21,28 +20,17 @@ func LoadModules(platform string, admin bool, service string) {
         log.Fatal(err)
     }
 
-    chosenModules := config[service]
+    // Empty list which will hold filtered modules
+    var chosenModules []Module
 
-    // Testing to see if they are loaded correctly
-    for _, module := range chosenModules {
-		fmt.Println("Module Name:", module.Name)
-		fmt.Println("Description:", module.Description)
-		fmt.Println("Command:", module.Command)
-		fmt.Println("Require Superuser:", module.RequireSuperuser)
-		fmt.Println("Require Restart:", module.RequireRestart)
-		fmt.Println("Target OS:", module.TargetOS)
-    }
-
-    if platform == "win" {
-        // Load all windows modules since we can't check for admin
-        fmt.Println("Loading windows modules...")
-    } else {
-        fmt.Println("Loading linux modules...")
-
-        if !admin {
-            // Modules which require admin won't be displayed
-        } else {
-            // Modules which require admin will be displayed
+    // Filter modules based on OS && admin privileges
+    for _, module := range config[service] {
+        if platform == "linux" && module.TargetOS == "linux" && (!module.RequireSuperuser || admin) {
+            chosenModules = append(chosenModules, module)
+        } else if platform == "win" && module.TargetOS == "win" {
+            chosenModules = append(chosenModules, module)
         }
     }
+
+    return chosenModules
 }

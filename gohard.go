@@ -38,6 +38,7 @@ func main() {
         os.Exit(1)
     }
 
+    // Chosen service for hardening
     service := *servicePtr
 
     assetExists, err := util.PathExists("assets/modules.json")
@@ -46,7 +47,7 @@ func main() {
     }
 
     if !assetExists {
-        fmt.Println("Unable to find modules.json file in default assets/ location")
+        fmt.Println("Unable to find modules.json file in default location!")
         os.Exit(1)
     }
 
