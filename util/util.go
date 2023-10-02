@@ -3,12 +3,11 @@ package util
 import (
     "runtime"
     "errors"
-    "fmt"
     "os"
     "os/user"
 )
 
-func AssetExists(assetPath string) (bool, error) {
+func PathExists(assetPath string) (bool, error) {
     _, err := os.Stat(assetPath)
     if err == nil {
         return true, nil
@@ -37,16 +36,15 @@ func IsAdmin() (admin bool, err error) {
     }
 
     if currentPlatform == "linux" {
-        fmt.Println("Linux detected.")
 
         currentUser, err := user.Current()
         if err != nil {
             return false, err
         }
+
         return currentUser.Username == "root", nil
     } else if currentPlatform == "win" {
         // Can't reliably check for admin on windows unfortunately
-        fmt.Println("Windows detected.")
         return false, nil
     }
     return false, nil

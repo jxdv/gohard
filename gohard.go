@@ -38,19 +38,20 @@ func main() {
         os.Exit(1)
     }
 
+    // Chosen service for hardening
     service := *servicePtr
 
-    assetExists, err := util.AssetExists("assets/modules.json")
+    assetExists, err := util.PathExists("assets/modules.json")
     if err != nil {
         log.Fatal(err)
     }
 
     if !assetExists {
-        fmt.Println("Unable to find modules.json file in default assets/ location")
+        fmt.Println("Unable to find modules.json file in default location!")
         os.Exit(1)
     }
 
-    supportedPlatform, err := util.IsLinux()
+    detectedPlatform, err := util.IsLinux()
     if err != nil {
         log.Fatal(err)
     }
@@ -62,8 +63,8 @@ func main() {
 
     if !isAdmin {
         fmt.Println("gohard running without admin privileges, modules which require admin won't be displayed")
-        mods.LoadModules(supportedPlatform, isAdmin, service)
+        mods.LoadModules(detectedPlatform, isAdmin, service)
     } else {
-        mods.LoadModules(supportedPlatform, isAdmin, service)
+        mods.LoadModules(detectedPlatform, isAdmin, service)
     }
 }
