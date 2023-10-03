@@ -4,9 +4,14 @@ import (
     "encoding/json"
     "io/ioutil"
     "log"
+    "fmt"
 )
 
 func LoadModules(platform string, admin bool, service string) []Module {
+    if !admin {
+        fmt.Println("gohard running without admin privileges - modules which require admin won't be loaded")
+    }
+
     jsonData, err := ioutil.ReadFile("assets/modules.json")
     if err != nil {
         log.Fatal(err)
