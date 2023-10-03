@@ -61,10 +61,5 @@ func main() {
         log.Fatal(err)
     }
 
-    if !isAdmin {
-        fmt.Println("gohard running without admin privileges, modules which require admin won't be displayed")
-        mods.LoadModules(detectedPlatform, isAdmin, service)
-    } else {
-        mods.LoadModules(detectedPlatform, isAdmin, service)
-    }
+    filteredModules := mods.LoadModules(detectedPlatform, isAdmin, service)
 }
