@@ -41,7 +41,7 @@ func main() {
     service := *servicePtr
 
     assetExists, err := util.PathExists("assets/modules.json")
-    util.PanicErr(err)
+    util.FatalErr(err)
 
     if !assetExists {
         fmt.Println("Unable to find modules.json file in default location!")
@@ -49,10 +49,10 @@ func main() {
     }
 
     detectedPlatform, err := util.IsLinux()
-    util.PanicErr(err)
+    util.FatalErr(err)
 
     isAdmin, err := util.IsAdmin()
-    util.PanicErr(err)
+    util.FatalErr(err)
 
     filteredModules := mods.LoadModules(detectedPlatform, isAdmin, service)
     if len(filteredModules) == 0 {

@@ -8,7 +8,7 @@ import (
     "os/user"
 )
 
-func PanicErr (err error) {
+func FatalErr (err error) {
     if err != nil {
         log.Fatal(err)
     }
@@ -56,4 +56,3 @@ func IsAdmin() (admin bool, err error) {
     }
     return false, nil
 }
-
