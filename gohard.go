@@ -41,6 +41,7 @@ func main() {
     // Chosen service for hardening
     service := *servicePtr
 
+    // Check for .json file, which contains hardening modules
     assetExists, err := util.PathExists("assets/modules.json")
     util.FatalErr(err)
 
@@ -49,9 +50,11 @@ func main() {
         os.Exit(1)
     }
 
+    // Check for supported platform
     detectedPlatform, err := util.IsLinux()
     util.FatalErr(err)
 
+    // Check for admin privileges
     isAdmin, err := util.IsAdmin()
     util.FatalErr(err)
 
