@@ -69,5 +69,5 @@ func main() {
         os.Exit(1)
     }
 
-    ui.Run()
+    ui.Run(filteredModules)
 }
