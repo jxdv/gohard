@@ -3,9 +3,16 @@ package util
 import (
     "runtime"
     "errors"
+    "log"
     "os"
     "os/user"
 )
+
+func PanicErr (err error) {
+    if err != nil {
+        log.Fatal(err)
+    }
+}
 
 func PathExists(assetPath string) (bool, error) {
     _, err := os.Stat(assetPath)
