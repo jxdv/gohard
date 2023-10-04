@@ -7,6 +7,7 @@ import (
 
     "github.com/jxd1337/gohard/util"
     "github.com/jxd1337/gohard/mods"
+    "github.com/jxd1337/gohard/ui"
 )
 
 func main() {
@@ -64,4 +65,6 @@ func main() {
         fmt.Println("No modules loaded! Exiting..")
         os.Exit(1)
     }
+
+    ui.Run()
 }
