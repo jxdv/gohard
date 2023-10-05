@@ -3,11 +3,11 @@ package main
 import (
     "flag"
     "fmt"
-    "log"
     "os"
 
     "github.com/jxd1337/gohard/util"
     "github.com/jxd1337/gohard/mods"
+    "github.com/jxd1337/gohard/ui"
 )
 
 func main() {
@@ -41,25 +41,33 @@ func main() {
     // Chosen service for hardening
     service := *servicePtr
 
+    // Check for .json file, which contains hardening modules
     assetExists, err := util.PathExists("assets/modules.json")
-    if err != nil {
-        log.Fatal(err)
-    }
+    util.FatalErr(err)
 
     if !assetExists {
         fmt.Println("Unable to find modules.json file in default location!")
         os.Exit(1)
     }
 
+    // Check for supported platform
     detectedPlatform, err := util.IsLinux()
-    if err != nil {
-        log.Fatal(err)
-    }
+    util.FatalErr(err)
 
+    // Check for admin privileges
     isAdmin, err := util.IsAdmin()
-    if err != nil {
-        log.Fatal(err)
-    }
+    util.FatalErr(err)
 
     filteredModules := mods.LoadModules(detectedPlatform, isAdmin, service)
+    if len(filteredModules) == 0 {
+        /*
+        If no modules are loaded after initial loading & filtering
+        we exit the program -> there are situations when this can happen, for example:
+        loading ssh modules without admin privileges
+        */
+        fmt.Println("No modules loaded! Exiting..")
+        os.Exit(1)
+    }
+
+    ui.Run(filteredModules)
 }

@@ -5,6 +5,8 @@ import (
     "io/ioutil"
     "log"
     "fmt"
+
+    "github.com/jxd1337/gohard/util"
 )
 
 func LoadModules(platform string, admin bool, service string) []Module {
@@ -13,9 +15,7 @@ func LoadModules(platform string, admin bool, service string) []Module {
     }
 
     jsonData, err := ioutil.ReadFile("assets/modules.json")
-    if err != nil {
-        log.Fatal(err)
-    }
+    util.FatalErr(err)
 
     // This holds unmarshalled data
     var config map[string][]Module
