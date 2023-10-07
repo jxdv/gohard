@@ -10,6 +10,8 @@ import (
 )
 
 func Run(modules []mods.Module) {
+    fmt.Println("Type 'exit' to stop gohard")
+
     separator := strings.Repeat("-", 80)
     for idx, module := range modules {
         fmt.Println(separator)
@@ -25,9 +27,14 @@ func Run(modules []mods.Module) {
     userInput, _ := reader.ReadString('\n')
     userInput = strings.TrimSpace(userInput)
 
-    // User didn't enter anything
     if userInput == "" {
+        // User didn't enter anything
         fmt.Println("No modules selected..")
         return
+    } else if userInput == "exit" {
+        fmt.Println("Exiting gohard..")
+        os.Exit(0)
     }
+
+
 }
