@@ -28,13 +28,15 @@ func Run(modules []mods.Module) {
     userInput, _ := reader.ReadString('\n')
     userInput = strings.TrimSpace(userInput)
 
+    if strings.ToLower(userInput) == "exit" {
+        fmt.Println("Exiting gohard..")
+        os.Exit(0)
+    }
+
     if userInput == "" {
         // User didn't enter anything
         fmt.Println("No modules selected..")
         return
-    } else if userInput == "exit" {
-        fmt.Println("Exiting gohard..")
-        os.Exit(0)
     }
 
     selectedModules := parseModuleSelection(userInput, modules)
