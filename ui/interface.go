@@ -1,8 +1,10 @@
 package ui
 
 import (
-    "fmt"
     "strings"
+    "bufio"
+    "fmt"
+    "os"
 
     "github.com/jxd1337/gohard/mods"
 )
@@ -17,14 +19,15 @@ func Run(modules []mods.Module) {
         fmt.Println("Command -> ", module.Command)
     }
 
-    prompt()
-}
+    reader := bufio.NewReader(os.Stdin)
+    fmt.Printf("Enter module ID or interval: ")
 
-func prompt() {
-    fmt.Println("Enter module ID or an interval of modules:")
+    userInput, _ := reader.ReadString('\n')
+    userInput = strings.TrimSpace(userInput)
 
-    var choice string
-    fmt.Scanln(&choice)
-
-    fmt.Println(choice)
+    // User didn't enter anything
+    if userInput == "" {
+        fmt.Println("No modules selected..")
+        return
+    }
 }
