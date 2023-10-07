@@ -16,4 +16,15 @@ func Run(modules []mods.Module) {
         fmt.Println("Description -> ", module.Description)
         fmt.Println("Command -> ", module.Command)
     }
+
+    prompt()
+}
+
+func prompt() {
+    fmt.Println("Enter module ID or an interval of modules:")
+
+    var choice string
+    fmt.Scanln(&choice)
+
+    fmt.Println(choice)
 }
