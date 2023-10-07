@@ -2,6 +2,7 @@ package ui
 
 import (
     "strings"
+    "strconv"
     "bufio"
     "fmt"
     "os"
@@ -36,5 +37,23 @@ func Run(modules []mods.Module) {
         os.Exit(0)
     }
 
+    selectedModules := parseModuleSelection(userInput, modules)
+    if len(selectedModules) == 0 {
+        fmt.Println("Invalid module selection..")
+        return
+    }
 
+    fmt.Println("Executing selected modules:")
+    for _, module := range selectedModules {
+        fmt.Println(module.Name, "->", module.Description)
+        // exec function from another pkg will get called here
+    }
+}
+
+func parseModuleSelection(input string, modules []Module) []Module {
+    var selectedModules []Module
+
+    if input == "-" {
+        return modules
+    }
 }
