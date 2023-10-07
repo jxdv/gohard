@@ -58,8 +58,8 @@ func main() {
     isAdmin, err := util.IsAdmin()
     util.FatalErr(err)
 
-    filteredModules := mods.LoadModules(detectedPlatform, isAdmin, service)
-    if len(filteredModules) == 0 {
+    modules := mods.LoadModules(detectedPlatform, isAdmin, service)
+    if len(modules) == 0 {
         /*
         If no modules are loaded after initial loading & filtering
         we exit the program -> there are situations when this can happen, for example:
@@ -69,5 +69,5 @@ func main() {
         os.Exit(1)
     }
 
-    ui.Run(filteredModules)
+    ui.Run(modules)
 }
