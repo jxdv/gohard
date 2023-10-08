@@ -51,8 +51,13 @@ func IsAdmin() (admin bool, err error) {
 
         return currentUser.Username == "root", nil
     } else if currentPlatform == "win" {
-        // Can't reliably check for admin on windows unfortunately
-        return false, nil
+        /*
+        There isn't a reliable way to check for admin on win
+        as there is on linux so until I find a solution
+        this will return true and will handle permission errors
+        and other stuff in the function that'll execute commands
+        */
+        return true, nil
     }
     return false, nil
 }
