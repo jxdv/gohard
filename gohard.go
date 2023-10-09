@@ -1,7 +1,6 @@
 package main
 
 import (
-    "flag"
     "fmt"
     "os"
 
@@ -11,44 +10,7 @@ import (
 )
 
 func main() {
-    allowedServices := []string{"firewall", "user", "network", "sys", "kernel", "filesystem", "ssh"}
-
-    // Parse cli args
-    servicePtr := flag.String("service", "", "Specify a service (firewall, user, network, sys, kernel, filesystem, ssh)")
-    flag.Parse()
-
-    // Check if service flag is provided
-    if *servicePtr == "" {
-        fmt.Println("Please provide the service flag.")
-        flag.Usage()
-        os.Exit(1)
-    }
-
-    // Check if provided service is in the list of allowed services
-    validService := false
-    for _, s := range allowedServices {
-        if *servicePtr == s {
-            validService = true
-            break
-        }
-    }
-
-    if !validService {
-        fmt.Println("Invalid service. Allowed services are:", allowedServices)
-        os.Exit(1)
-    }
-
-    // Chosen service for hardening
-    service := *servicePtr
-
-    // Check for .json file, which contains hardening modules
-    assetExists, err := util.PathExists("assets/modules.json")
-    util.FatalErr(err)
-
-    if !assetExists {
-        fmt.Println("Unable to find modules.json file in default location!")
-        os.Exit(1)
-    }
+    service := ui.ParseArgs()
 
     // Check for supported platform
     detectedPlatform, err := util.IsLinux()

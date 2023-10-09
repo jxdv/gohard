@@ -8,9 +8,19 @@ import (
     "os"
 
     "github.com/jxd1337/gohard/mods"
+    "github.com/jxd1337/gohard/util"
 )
 
 func Run(modules []mods.Module) {
+    // Check for .json file, which contains hardening modules
+    assetExists, err := util.PathExists("assets/modules.json")
+    util.FatalErr(err)
+
+    if !assetExists {
+        fmt.Println("Unable to find modules.json file in default location!")
+        os.Exit(1)
+    }
+
     fmt.Println("Type 'exit' to stop gohard")
 
     separator := strings.Repeat("-", 80)
