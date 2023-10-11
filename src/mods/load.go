@@ -6,7 +6,7 @@ import (
     "log"
     "fmt"
 
-    "github.com/jxd1337/gohard/util"
+    "github.com/jxd1337/gohard/src/util"
 )
 
 func LoadModules(platform string, admin bool, service string) []Module {

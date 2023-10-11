@@ -4,9 +4,9 @@ import (
     "fmt"
     "os"
 
-    "github.com/jxd1337/gohard/util"
-    "github.com/jxd1337/gohard/mods"
-    "github.com/jxd1337/gohard/ui"
+    "github.com/jxd1337/gohard/src/util"
+    "github.com/jxd1337/gohard/src/mods"
+    "github.com/jxd1337/gohard/src/ui"
 )
 
 func main() {
