@@ -18,11 +18,13 @@ func ExecCmd(cmd string) {
     var cmdInstance *exec.Cmd
 
     if runtime.GOOS == "linux" {
+        // Use shell for linux commands
         cmdInstance = exec.Command("/bin/sh", "-c", cmd)
     } else {
         cmdInstance = exec.Command("cmd", "/C", cmd)
     }
 
+    // Set the output to the same as the current process
     cmdInstance.Stdout = os.Stdout
     cmdInstance.Stderr = os.Stderr
 
