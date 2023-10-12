@@ -14,7 +14,10 @@ func main() {
 
     // Check for supported platform
     detectedPlatform, err := util.IsLinux()
-    util.FatalErr(err)
+    if err != nil {
+        fmt.Printf("Error: %v while checking for platform\n", err)
+        os.Exit(1)
+    }
 
     // Check for admin privileges
     isAdmin, err := util.IsAdmin()
