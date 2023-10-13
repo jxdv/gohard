@@ -30,7 +30,6 @@ func Run(modules []mods.Module) {
         fmt.Printf("Hardening module -> %s\n", module.Name)
         fmt.Printf("Description -> %s\n", module.Description)
         fmt.Printf("Command -> %s\n", module.Command)
-
     }
 
     reader := bufio.NewReader(os.Stdin)
