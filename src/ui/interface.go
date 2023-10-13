@@ -58,7 +58,7 @@ func Run(modules []mods.Module) {
     fmt.Println("Executing selected modules:")
     for _, module := range selectedModules {
         fmt.Println(module.Name, "->", module.Description)
-        // exec function from another pkg will get called here
+        util.ExecCmd(module.Command)
     }
 }
 
