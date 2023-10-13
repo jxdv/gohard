@@ -15,13 +15,12 @@ func main() {
     // Check for supported platform
     detectedPlatform, err := util.IsLinux()
     if err != nil {
-        fmt.Printf("Error: %v while checking for platform\n", err)
+        fmt.Printf("Error: %v\n", err)
         os.Exit(1)
     }
 
     // Check for admin privileges
-    isAdmin, err := util.IsAdmin()
-    util.FatalErr(err)
+    isAdmin := util.IsAdmin()
 
     modules := mods.LoadModules(detectedPlatform, isAdmin, service)
     if len(modules) == 0 {

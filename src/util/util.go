@@ -36,20 +36,20 @@ func IsLinux() (platform string, err error) {
     }
 }
 
-func IsAdmin() (admin bool, err error) {
+func IsAdmin() (admin bool) {
     currentPlatform, err := IsLinux()
     if err != nil {
-        return false, err
+        return false
     }
 
     if currentPlatform == "linux" {
 
         currentUser, err := user.Current()
         if err != nil {
-            return false, err
+            return false
         }
 
-        return currentUser.Username == "root", nil
+        return currentUser.Username == "root"
     } else if currentPlatform == "win" {
         /*
         There isn't a reliable way to check for admin on win
@@ -57,7 +57,7 @@ func IsAdmin() (admin bool, err error) {
         this will return true and will handle permission errors
         and other stuff in the function that'll execute commands
         */
-        return true, nil
+        return true
     }
-    return false, nil
+    return false
 }
