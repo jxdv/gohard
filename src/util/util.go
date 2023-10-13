@@ -14,7 +14,7 @@ func FatalErr (err error) {
     }
 }
 
-func PathExists(assetPath string) (bool, error) {
+func PathExists(assetPath string) (exists bool, err error) {
     _, err := os.Stat(assetPath)
     if err == nil {
         return true, nil
@@ -36,20 +36,20 @@ func IsLinux() (platform string, err error) {
     }
 }
 
-func IsAdmin() (admin bool) {
+func IsAdmin() (admin bool, err error) {
     currentPlatform, err := IsLinux()
     if err != nil {
-        return false
+        return false, err
     }
 
     if currentPlatform == "linux" {
 
         currentUser, err := user.Current()
         if err != nil {
-            return false
+            return false, err
         }
 
-        return currentUser.Username == "root"
+        return currentUser.Username == "root", nil
     } else if currentPlatform == "win" {
         /*
         There isn't a reliable way to check for admin on win
@@ -57,7 +57,7 @@ func IsAdmin() (admin bool) {
         this will return true and will handle permission errors
         and other stuff in the function that'll execute commands
         */
-        return true
+        return true, nil
     }
-    return false
+    return false, nil
 }
