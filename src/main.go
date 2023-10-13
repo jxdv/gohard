@@ -20,7 +20,11 @@ func main() {
     }
 
     // Check for admin privileges
-    isAdmin := util.IsAdmin()
+    isAdmin, err := util.IsAdmin()
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        os.Exit(1)
+    }
 
     modules := mods.LoadModules(detectedPlatform, isAdmin, service)
     if len(modules) == 0 {
