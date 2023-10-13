@@ -21,8 +21,9 @@ func LoadModules(platform string, admin bool, service string) []Module {
     var config map[string][]Module
 
     // Load the json data into our struct
-    if err := json.Unmarshal(jsonData, &config); err != nil {
-        log.Fatal(err)
+    err := json.Unmarshal(jsonData, &config)
+    if err != nil {
+        util.FatalErr(err)
     }
 
     // Empty list which will hold filtered modules
