@@ -30,7 +30,7 @@ func ParseArgs() string {
     }
 
     if !validService {
-        fmt.Println("Invalid service. Allowed services are:", allowedServices)
+        fmt.Printf("Invalid service. Use one of these: %v\n", allowedServices)
         os.Exit(1)
     }
 

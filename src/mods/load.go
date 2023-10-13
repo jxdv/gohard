@@ -3,7 +3,6 @@ package mods
 import (
     "encoding/json"
     "io/ioutil"
-    "log"
     "fmt"
 
     "github.com/jxd1337/gohard/src/util"
@@ -15,14 +14,17 @@ func LoadModules(platform string, admin bool, service string) []Module {
     }
 
     jsonData, err := ioutil.ReadFile("assets/modules.json")
-    util.FatalErr(err)
+    if err != nil {
+        util.FatalErr(err)
+    }
 
-    // This holds unmarshalled data
+    // Store unmarshalled data
     var config map[string][]Module
 
     // Load the json data into our struct
-    if err := json.Unmarshal(jsonData, &config); err != nil {
-        log.Fatal(err)
+    err = json.Unmarshal(jsonData, &config)
+    if err != nil {
+        util.FatalErr(err)
     }
 
     // Empty list which will hold filtered modules

@@ -14,8 +14,8 @@ func FatalErr (err error) {
     }
 }
 
-func PathExists(assetPath string) (bool, error) {
-    _, err := os.Stat(assetPath)
+func PathExists(assetPath string) (exists bool, err error) {
+    _, err = os.Stat(assetPath)
     if err == nil {
         return true, nil
     }
