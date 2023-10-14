@@ -14,18 +14,15 @@ func LoadModules(platform string, admin bool, service string) []Module {
     }
 
     jsonData, err := ioutil.ReadFile("assets/modules.json")
-    if err != nil {
-        util.FatalErr(err)
-    }
+    util.FatalErr(err)
+
 
     // Store unmarshalled data
     var config map[string][]Module
 
     // Load the json data into our struct
     err = json.Unmarshal(jsonData, &config)
-    if err != nil {
-        util.FatalErr(err)
-    }
+    util.FatalErr(err)
 
     // Empty list which will hold filtered modules
     var chosenModules []Module
