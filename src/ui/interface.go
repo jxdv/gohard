@@ -46,8 +46,8 @@ func Run(modules []mods.Module) {
         os.Exit(0)
     }
 
+    // User didn't enter anything
     if userInput == "" {
-        // User didn't enter anything
         fmt.Println("No modules selected.")
         return
     }
@@ -80,8 +80,8 @@ func parseModuleSelection(input string, modules []mods.Module) []mods.Module {
             start, startErr := strconv.Atoi(rangeParts[0])
             end, endErr := strconv.Atoi(rangeParts[1])
 
+            // Valid range selection
             if startErr == nil && endErr == nil && start <= end && start >= 1 && end <= len(modules) {
-                // Valid range selection
                 for i := start; i <= end; i++ {
                     selectedModules = append(selectedModules, modules[i-1])
                 }

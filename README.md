@@ -14,7 +14,8 @@ GOOS=linux GOARCH=amd64 go build -o bin/ src/main.go
 
 64-bit windows
 ```commandline
-GOOS=windows GOARCH=amd64 go build -o bin/ src/main.go
+set GOOS=windows GOARCH=amd64
+go build -o bin/ src/main.go
 ```
 
 ### Usage
