@@ -60,7 +60,7 @@ func Run(modules []mods.Module) {
 
     fmt.Printf("Executing selected modules: ")
     for _, module := range selectedModules {
-        fmt.Printf("%s ", module.Name)
+        fmt.Printf("%s\n", module.Name)
         util.ExecCmd(module.Command)
     }
 }
