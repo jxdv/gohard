@@ -26,7 +26,6 @@ Help message:
 (linux) bin/main -h
 ```
 
-
 ```commandline
 (windows) cmd /k main.exe -h
 ```
