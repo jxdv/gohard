@@ -9,11 +9,22 @@ I started learning Golang recently, so I thought this would be a good practice.
 
 ### Build
 
-build instructions will be here
+64-bit linux
+```commandline
+GOOS=linux GOARCH=amd64 go build -o bin/ src/main.go
+```
+
+64-bit windows
+```commandline
+GOOS=windows GOARCH=amd64 go build -o bin/ src/main.go
+```
 
 ### Usage
 
-usage example will be here
+Use SSH hardening modules in linux:
+```commandline
+
+```
 
 ### License
 
