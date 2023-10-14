@@ -21,9 +21,14 @@ GOOS=windows GOARCH=amd64 go build -o bin/ src/main.go
 
 ### Usage
 
-Use SSH hardening modules in linux:
+Use SSH hardening modules:
 ```commandline
 sudo -E bin/main --service=ssh
+```
+
+Use Kernel hardening modules
+```commandline
+sudo -E bin/main --service=kernel
 ```
 
 ### License
