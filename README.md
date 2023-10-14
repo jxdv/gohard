@@ -21,15 +21,32 @@ GOOS=windows GOARCH=amd64 go build -o bin/ src/main.go
 
 ### Usage
 
+Help message:
+```commandline
+(linux) bin/main -h
+```
+
+
+```commandline
+(windows) cmd /k main.exe -h
+```
+
 Use SSH hardening modules:
 ```commandline
-sudo -E bin/main --service=ssh
+(linux) sudo -E bin/main --service=ssh
 ```
 
 Use Kernel hardening modules
 ```commandline
-sudo -E bin/main --service=kernel
+(linux) sudo -E bin/main --service=kernel
 ```
+
+Use firewall hardening modules
+```commandline
+(windows) cmd /k main.exe --service=firewall
+```
+
+And basically the same way for all the other services.
 
 ### License
 
