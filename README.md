@@ -23,7 +23,7 @@ GOOS=windows GOARCH=amd64 go build -o bin/ src/main.go
 
 Use SSH hardening modules in linux:
 ```commandline
-
+sudo -E bin/main --service=ssh
 ```
 
 ### License
