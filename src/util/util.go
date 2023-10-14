@@ -6,6 +6,8 @@ import (
     "log"
     "os"
     "os/user"
+
+    "golang.org/x/sys/windows"
 )
 
 func FatalErr (err error) {
@@ -51,13 +53,27 @@ func IsAdmin() (admin bool, err error) {
 
         return currentUser.Username == "root", nil
     } else if currentPlatform == "win" {
-        /*
-        There isn't a reliable way to check for admin on win
-        as there is on linux so until I find a solution
-        this will return true and will handle permission errors
-        and other stuff in the function that'll execute commands
-        */
-        return true, nil
+        var sid *windows.SID
+
+        err := windows.AllocateAndInitializeSid(
+                &windows.SECURITY_NT_AUTHORITY,
+                2,
+                windows.SECURITY_BUILTIN_DOMAIN_RID,
+                windows.DOMAIN_ALIAS_RID_ADMINS,
+                0, 0, 0, 0, 0, 0,
+                &sid)
+        if err != nil {
+            FatalErr(err)
+        }
+        defer windows.FreeSid(sid)
+
+        token := windows.Token(0)
+
+        member, err := token.IsMember(sid)
+        if err != nil {
+            FatalErr(err)
+        }
+        return member, nil
     }
     return false, nil
 }
