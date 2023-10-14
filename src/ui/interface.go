@@ -42,25 +42,25 @@ func Run(modules []mods.Module) {
     userInput = strings.TrimSpace(userInput)
 
     if strings.ToLower(userInput) == "exit" {
-        fmt.Println("Exiting gohard..")
+        fmt.Println("Bye!")
         os.Exit(0)
     }
 
     if userInput == "" {
         // User didn't enter anything
-        fmt.Println("No modules selected..")
+        fmt.Println("No modules selected.")
         return
     }
 
     selectedModules := parseModuleSelection(userInput, modules)
     if len(selectedModules) == 0 {
-        fmt.Println("Invalid module selection..")
+        fmt.Println("Invalid module selection.")
         return
     }
 
     fmt.Println("Executing selected modules:")
     for _, module := range selectedModules {
-        fmt.Println(module.Name, "->", module.Description)
+        fmt.Printf("%s -> %s\n", module.Name, module.Description)
         util.ExecCmd(module.Command)
     }
 }
@@ -68,6 +68,7 @@ func Run(modules []mods.Module) {
 func parseModuleSelection(input string, modules []mods.Module) []mods.Module {
     var selectedModules []mods.Module
 
+    // This will select all the available modules
     if input == "-" {
         return modules
     }
@@ -76,10 +77,10 @@ func parseModuleSelection(input string, modules []mods.Module) []mods.Module {
     if strings.Contains(input, "-") {
         rangeParts := strings.Split(input, "-")
         if len (rangeParts) == 2 {
-            start, err1 := strconv.Atoi(rangeParts[0])
-            end, err2 := strconv.Atoi(rangeParts[1])
+            start, startErr := strconv.Atoi(rangeParts[0])
+            end, endErr := strconv.Atoi(rangeParts[1])
 
-            if err1 == nil && err2 == nil && start <= end && start >= 1 && end <= len(modules) {
+            if startErr == nil && endErr == nil && start <= end && start >= 1 && end <= len(modules) {
                 // Valid range selection
                 for i := start; i <= end; i++ {
                     selectedModules = append(selectedModules, modules[i-1])
