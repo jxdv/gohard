@@ -6,14 +6,17 @@ import (
     "bufio"
     "fmt"
     "os"
+    "path/filepath"
 
     "github.com/jxd1337/gohard/src/mods"
     "github.com/jxd1337/gohard/src/util"
 )
 
 func Run(modules []mods.Module) {
+    assetPath := filepath.Join("assets", "modules.json")
+
     // Check for .json file, which contains hardening modules
-    assetExists, err := util.PathExists("assets/modules.json")
+    assetExists, err := util.PathExists(assetPath)
     util.FatalErr(err)
 
     if !assetExists {
