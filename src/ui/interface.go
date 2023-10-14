@@ -85,7 +85,7 @@ func parseModuleSelection(input string, modules []mods.Module) []mods.Module {
                     selectedModules = append(selectedModules, modules[i-1])
                 }
             } else {
-                fmt.Println("Something went wrong while parsing range selection!")
+                fmt.Println("Range is invalid!")
                 os.Exit(1)
             }
         }
