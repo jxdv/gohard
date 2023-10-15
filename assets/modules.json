@@ -571,6 +571,14 @@
       "require_superuser": true,
       "require_restart": true,
       "target_os": "linux"
+    },
+    {
+      "name": "SSH_Disable_Client_X11_Forwarding",
+      "desc": "Disable X11 display forwarding",
+      "command": "echo \"ForwardX11 no\" >> /etc/ssh/ssh_config",
+      "require_superuser": true,
+      "require_restart": false,
+      "target_os": "linux"
     }
   ]
 }
