@@ -18,26 +18,29 @@ set GOOS=windows GOARCH=amd64
 go build
 ```
 
+Unfortunately Microsoft Defender might flag this binary as a potential virus and refuse to execute it, so disabling the
+Real-time protection is a must-do in order to run.
+
 ### Usage
 
 Help message:
 ```commandline
-(linux) bin/main -h
+(linux) bin/gohard -h
 ```
 
 Use SSH hardening modules:
 ```commandline
-(linux) sudo -E bin/main --service=ssh
+(linux) sudo -E bin/gohard --service=ssh
 ```
 
 Use Kernel hardening modules
 ```commandline
-(linux) sudo -E bin/main --service=kernel
+(linux) sudo -E bin/gohard --service=kernel
 ```
 
 Use firewall hardening modules
 ```commandline
-(windows) cmd /k main.exe --service=firewall
+(windows) cmd /k gohard.exe --service=firewall
 ```
 
 And basically the same way for all the other services.
@@ -54,10 +57,14 @@ You can also execute all available modules using '-':
 
 ![all](assets/img/all.png)
 
+If any command doesn't finish successfully gohard will throw out an error, but will continue with the execution of all
+remaining modules:
+
+![error](assets/img/win_error.png)
+
 ### Contributing
 
-This was my first attempt at writing a project in Golang. The code may have some bad practices I might not be aware of yet.
-Any contributions are welcome!
+This is my first golang project, so it might not have the best practices, that's why contributions are very welcome!
 
 ### License
 
