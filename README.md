@@ -42,6 +42,18 @@ Use firewall hardening modules
 
 And basically the same way for all the other services.
 
+You can use 'ranges' to execute more than 1 module at the same time:
+
+![valid_range](assets/img/valid_range.png)
+
+If you enter either wrong start / end index, gohard will exit:
+
+![invalid_range](assets/img/invalid_range.png)
+
+You can also execute all available modules using '-':
+
+![all](assets/img/all.png)
+
 ### License
 
 [GPL](LICENSE)
