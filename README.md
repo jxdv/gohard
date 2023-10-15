@@ -54,6 +54,11 @@ You can also execute all available modules using '-':
 
 ![all](assets/img/all.png)
 
+### Contributing
+
+This was my first attempt at writing a project in Golang. The code may have some bad practices I might no be aware of yet.
+Any contributions are welcome!
+
 ### License
 
 [GPL](LICENSE)
