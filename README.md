@@ -25,10 +25,6 @@ Help message:
 (linux) bin/main -h
 ```
 
-```commandline
-(windows) cmd /k main.exe -h
-```
-
 Use SSH hardening modules:
 ```commandline
 (linux) sudo -E bin/main --service=ssh
