@@ -9,13 +9,13 @@ I started learning Golang recently, so I thought this would be a good practice.
 
 64-bit linux
 ```commandline
-GOOS=linux GOARCH=amd64 go build -o bin/ src/main.go
+GOOS=linux GOARCH=amd64 go build -o bin/
 ```
 
 64-bit windows
 ```commandline
 set GOOS=windows GOARCH=amd64
-go build src/main.go
+go build
 ```
 
 ### Usage
