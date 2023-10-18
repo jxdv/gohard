@@ -26,7 +26,9 @@ func Run(modules []mods.Module) {
 
     separator := strings.Repeat("-", 50)
     for idx, module := range modules {
-        fmt.Println(separator)
+        if len(modules) > 1 {
+            fmt.Println(separator)
+        }
         fmt.Printf("Module ID: %d | %s\n", idx + 1, module.Name)
         fmt.Printf("Description: %s\n", module.Description)
     }
