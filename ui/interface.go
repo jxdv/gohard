@@ -24,8 +24,6 @@ func Run(modules []mods.Module) {
         os.Exit(1)
     }
 
-    fmt.Println("Type 'exit' to stop gohard")
-
     separator := strings.Repeat("-", 50)
     for idx, module := range modules {
         fmt.Println(separator)
@@ -34,7 +32,7 @@ func Run(modules []mods.Module) {
     }
 
     reader := bufio.NewReader(os.Stdin)
-    fmt.Printf("Enter module ID or interval: ")
+    fmt.Printf("Enter module ID or interval ('exit' to terminate gohard): ")
 
     userInput, _ := reader.ReadString('\n')
     userInput = strings.TrimSpace(userInput)
