@@ -56,11 +56,12 @@ func Run(modules []mods.Module) {
         return
     }
 
-    fmt.Printf("Executing selected modules: ")
     for _, module := range selectedModules {
-        fmt.Printf("%s\n", module.Name)
+        fmt.Printf("Executing %s\n", module.Name)
         util.ExecCmd(module.Command)
     }
+
+    fmt.Println("Done.")
 }
 
 func parseModuleSelection(input string, modules []mods.Module) []mods.Module {

@@ -47,15 +47,15 @@ And basically the same way for all the other services.
 
 You can use 'ranges' to execute more than 1 module at the same time:
 
-![valid_range](assets/img/valid_range.png)
+![valid_range](assets/img/good_range.png)
 
 If you enter either wrong start / end index, gohard will exit:
 
-![invalid_range](assets/img/invalid_range.png)
+![invalid_range](assets/img/bad_range.png)
 
 You can also execute all available modules using '-':
 
-![all](assets/img/all.png)
+![all](assets/img/all_range.png)
 
 If any command doesn't finish successfully gohard will throw out an error, but will continue with the execution of all
 remaining modules:
