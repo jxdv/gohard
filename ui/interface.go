@@ -24,19 +24,17 @@ func Run(modules []mods.Module) {
         os.Exit(1)
     }
 
-    fmt.Println("Type 'exit' to stop gohard")
-
-    separator := strings.Repeat("-", 80)
+    separator := strings.Repeat("-", 50)
     for idx, module := range modules {
-        fmt.Println(separator)
-        fmt.Printf("Module ID -> %d\n", idx + 1)
-        fmt.Printf("Hardening module -> %s\n", module.Name)
-        fmt.Printf("Description -> %s\n", module.Description)
-        fmt.Printf("Command -> %s\n", module.Command)
+        if len(modules) > 1 {
+            fmt.Println(separator)
+        }
+        fmt.Printf("Module ID: %d | %s\n", idx + 1, module.Name)
+        fmt.Printf("Description: %s\n", module.Description)
     }
 
     reader := bufio.NewReader(os.Stdin)
-    fmt.Printf("Enter module ID or interval: ")
+    fmt.Printf("Enter module ID or interval ('exit' to terminate gohard): ")
 
     userInput, _ := reader.ReadString('\n')
     userInput = strings.TrimSpace(userInput)
@@ -58,11 +56,12 @@ func Run(modules []mods.Module) {
         return
     }
 
-    fmt.Printf("Executing selected modules: ")
     for _, module := range selectedModules {
-        fmt.Printf("%s\n", module.Name)
+        fmt.Printf("Executing %s\n", module.Name)
         util.ExecCmd(module.Command)
     }
+
+    fmt.Println("Done.")
 }
 
 func parseModuleSelection(input string, modules []mods.Module) []mods.Module {
