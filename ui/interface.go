@@ -26,13 +26,11 @@ func Run(modules []mods.Module) {
 
     fmt.Println("Type 'exit' to stop gohard")
 
-    separator := strings.Repeat("-", 80)
+    separator := strings.Repeat("-", 50)
     for idx, module := range modules {
         fmt.Println(separator)
-        fmt.Printf("Module ID -> %d\n", idx + 1)
-        fmt.Printf("Hardening module -> %s\n", module.Name)
-        fmt.Printf("Description -> %s\n", module.Description)
-        fmt.Printf("Command -> %s\n", module.Command)
+        fmt.Printf("Module ID: %d | %s\n", idx + 1, module.Name)
+        fmt.Printf("Description: %s\n", module.Description)
     }
 
     reader := bufio.NewReader(os.Stdin)
