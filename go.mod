@@ -1,4 +1,4 @@
-module github.com/jxd1337/gohard
+module github.com/jxdv/gohard
 
 go 1.21.1
 

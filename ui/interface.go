@@ -8,8 +8,8 @@ import (
     "os"
     "path/filepath"
 
-    "github.com/jxd1337/gohard/mods"
-    "github.com/jxd1337/gohard/util"
+    "github.com/jxdv/gohard/mods"
+    "github.com/jxdv/gohard/util"
 )
 
 func Run(modules []mods.Module) {

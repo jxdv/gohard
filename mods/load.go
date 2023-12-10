@@ -5,7 +5,7 @@ import (
     "io/ioutil"
     "fmt"
 
-    "github.com/jxd1337/gohard/util"
+    "github.com/jxdv/gohard/util"
 )
 
 func LoadModules(platform string, admin bool, service string) []Module {
