@@ -16,7 +16,6 @@ func LoadModules(platform string, admin bool, service string) []Module {
     jsonData, err := ioutil.ReadFile("assets/modules.json")
     util.FatalErr(err)
 
-
     // Store unmarshalled data
     var config map[string][]Module
 
