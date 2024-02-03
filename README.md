@@ -61,11 +61,3 @@ If any command doesn't finish successfully gohard will throw out an error, but w
 remaining modules:
 
 ![error](assets/img/win_error.png)
-
-### Contributing
-
-This is my first golang project, so it might not have the best practices, that's why contributions are very welcome!
-
-### License
-
-[GPL](LICENSE)
