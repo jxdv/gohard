@@ -1,0 +1,48 @@
+name: Go build
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "mods/**"
+      - "ui/**"
+      - "util/**"
+      - "main.go"
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "mods/**"
+      - "ui/**"
+      - "util/**"
+      - "main.go"
+
+jobs:
+
+  build_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Build on Ubuntu
+        run: go build
+
+  build_windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Build on Windows
+        run: go build
