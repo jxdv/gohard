@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-    fmt.Println("Test")
     service := ui.ParseArgs()
 
     // Check for supported platform
