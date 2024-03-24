@@ -8,39 +8,45 @@ I started learning Golang recently, so I thought this would be a good practice.
 ### Build
 
 64-bit linux
-```commandline
+
+```shell
 GOOS=linux GOARCH=amd64 go build -o bin/
 ```
 
 64-bit windows
-```commandline
+
+```shell
 set GOOS=windows GOARCH=amd64
 go build
 ```
 
-Unfortunately Microsoft Defender might flag this binary as a potential virus and refuse to execute it, so disabling the
-Real-time protection is a must-do in order to run.
+There's a possibility that Microsoft Defender will flag this binary as malicious and refuse to execute it.
+[Disabling real-time protection](https://support.microsoft.com/en-us/windows/turn-off-defender-antivirus-protection-in-windows-security-99e6004f-c54c-8509-773c-a4d776b77960) is a <b>must-do</b> in order to run.
 
 ### Usage
 
-Help message:
-```commandline
-(linux) bin/gohard -h
+[UNIX] Help message:
+
+```shell
+bin/gohard -h
 ```
 
-Use SSH hardening modules:
-```commandline
-(linux) sudo -E bin/gohard --service=ssh
+[UNIX] Use SSH hardening modules:
+
+```shell
+sudo -E bin/gohard --service=ssh
 ```
 
-Use Kernel hardening modules
-```commandline
-(linux) sudo -E bin/gohard --service=kernel
+[UNIX] Use Kernel hardening modules
+
+```shell
+sudo -E bin/gohard --service=kernel
 ```
 
-Use firewall hardening modules
-```commandline
-(windows) cmd /k gohard.exe --service=firewall
+[WINDOWS] Use firewall hardening modules
+
+```shell
+cmd /k gohard.exe --service=firewall
 ```
 
 And basically the same way for all the other services.
