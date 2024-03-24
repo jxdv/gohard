@@ -23,24 +23,33 @@ go build
 There's a possibility that Microsoft Defender will flag this binary as malicious and refuse to execute it.
 [Disabling real-time protection](https://support.microsoft.com/en-us/windows/turn-off-defender-antivirus-protection-in-windows-security-99e6004f-c54c-8509-773c-a4d776b77960) is a <b>must-do</b> in order to run.
 
+---
+
+[UNIX] Create a symlink for gohard binary:
+
+```shell
+sudo apt-get install -y coreutils
+sudo ln -s $(readlink -f bin/gohard) /usr/local/bin
+```
+
 ### Usage
 
 [UNIX] Help message:
 
 ```shell
-bin/gohard -h
+gohard -h
 ```
 
 [UNIX] Use SSH hardening modules:
 
 ```shell
-sudo -E bin/gohard --service=ssh
+sudo -E gohard --service=ssh
 ```
 
 [UNIX] Use Kernel hardening modules
 
 ```shell
-sudo -E bin/gohard --service=kernel
+sudo -E gohard --service=kernel
 ```
 
 [WINDOWS] Use firewall hardening modules
