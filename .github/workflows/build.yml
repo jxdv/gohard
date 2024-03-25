@@ -19,7 +19,9 @@ on:
 jobs:
 
   build_ubuntu:
+    name: Build go binary on Ubuntu
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -33,6 +35,7 @@ jobs:
         run: go build
 
   build_windows:
+    name: Build go executable on Windows
     runs-on: windows-latest
 
     steps:
