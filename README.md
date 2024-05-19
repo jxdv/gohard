@@ -76,3 +76,18 @@ If any command doesn't finish successfully gohard will throw out an error, but w
 remaining modules:
 
 ![error](.github/media/win_error.png)
+
+
+### Dockerizing
+
+Build the tag first:
+
+```shell
+docker build -t gohard .
+```
+
+Running any hardening service:
+
+```shell
+sudo -E docker run --rm -it gohard --service=kernel
+```
