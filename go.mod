@@ -2,4 +2,4 @@ module github.com/jxdv/gohard
 
 go 1.21.1
 
-require golang.org/x/sys v0.21.0
+require golang.org/x/sys v0.22.0
